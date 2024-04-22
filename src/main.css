@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-size: 14px;
+}
+body {
+  background-color: #fafafa;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h1 {
+    @apply text-[1.2em] sx:text-[1.5em] leading-[1.4em] font-medium;
+  }
+}
+
+:root {
+  --success: #22c55e;
+  --info: #3b82f6;
+  --warning: #f97316;
+  --error: #ef4444;
+}
+
+@layer components {
+  .main_container {
+    @apply 2xl:max-w-[1500px] mx-auto px-2 sm:px-4 w-full flex-auto flex flex-col justify-between;
+  }
+  .h1 {
+    @apply text-[2em] max-sm:text-[1.5em] text-x_neutral-800 font-bold mb-3 max-sm:mb-2;
+  }
+  .h2 {
+    @apply font-medium mb-[0.8em] text-x_cyan-600 text-[1.8em] max-sm:text-[1.4em] max-sx:text-[1em] uppercase tracking-[0.75px];
+  }
+  .tjs {
+    @apply after:content-['TJS'] after:opacity-70 after:text-[0.7em] after:font-semibold;
+  }
+  .round_close {
+    @apply absolute -top-3 left-3 md:top-1/2 md:left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-x_red-600 w-6 h-6 cursor-pointer hover:round_close_shadow;
+  }
+  .required_cls {
+    @apply text-x_red-500 text-[.7em] font-semibold font-serif;
+  }
+  .absolute_center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+  .add_to_cart_before {
+    @apply before:content-bg_add_to_cart before:absolute before:top-[50%] before:left-[50%] before:-translate-y-[40%] before:-translate-x-[50%];
+  }
+  .slow_transition_200 {
+    @apply transition-all duration-200 ease-linear;
+  }
+  .slow_transition_300 {
+    @apply transition-all duration-300 ease-linear;
+  }
+  .slow_transition_500 {
+    @apply transition-all duration-500 ease-out;
+  }
+  /* PAGINATION AND ACTIVE PAGINATION =================================================================== */
+  .base_pag {
+    @apply py-1 px-3 first:rounded-l-[5px] last:rounded-r-[5px] cursor-pointer;
+  }
+  .active_pag {
+    @apply bg-x_orange-500 hover:bg-x_orange-400 text-white;
+  }
+  .none_active_pag {
+    @apply bg-x_neutral-300 hover:bg-x_neutral-200 text-x_neutral-800;
+  }
+
+  /* BUTTON CLASSES======================================================================================= */
+  .button_contained_classes {
+    @apply rounded-[6px] slow_transition_200 font-semibold tracking-wider leading-normal cursor-pointer outline-none;
+  }
+  .contained_current {
+    @apply bg-x_cyan-700 hover:bg-x_cyan-600 text-white;
+  }
+  .contained_orange {
+    @apply bg-x_orange-700 hover:bg-x_orange-600 text-white;
+  }
+  .contained_gray {
+    @apply bg-x_neutral-300 hover:bg-x_neutral-400 text-x_neutral-800;
+  }
+  .button_outlined_classes {
+    @apply border-[2px] rounded-[6px] slow_transition_200 leading-normal cursor-pointer font-semibold;
+  }
+  .outlined_current {
+    @apply border-x_cyan-700 text-x_cyan-700 hover:bg-x_cyan-700 hover:text-white;
+  }
+  .outlined_orange {
+    @apply border-x_orange-700 text-x_orange-700 hover:bg-x_orange-700 hover:text-white;
+  }
+
+  /* FORM INPUT CLASSES ====================================================================================== */
+  .input_control {
+    @apply block outline-none rounded-[6px] w-full h-full px-4 font-medium border-[1px] border-x_neutral-300 input_control_placeholder_classes;
+  }
+  .input_control_placeholder_classes {
+    @apply placeholder:text-x_neutral-800 placeholder:opacity-60 placeholder:font-normal placeholder:text-[1em] focus:placeholder:translate-x-1;
+  }
+  .select_option_border_classes {
+    @apply font-medium text-x_neutral-800 block w-full h-10 px-4 border-[1px] rounded-[6px] outline-none;
+  }
+
+  /* INPUT OUTER INER CONTROLS ================================================================================= */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  /* remove bg autocomplete */
+  input:-webkit-autofill {
+    transition: all 5000s ease-in-out;
+  }
+
+  /* Swiper group classes------------------------------------------------------------------------------------------------------------------------------------------------------ */
+  .swiper_buttons_bg {
+    @apply text-[2rem] font-bold bg-white bg-opacity-50 cursor-pointer md:w-12 sx:w-9 md:h-12 sx:h-9 w-8 h-8 rounded-full transition-all duration-200 add_to_cart_shadow hover:bg-opacity-100;
+  }
+  .swiper_buttons_before_prev_icon {
+    @apply content-bg_arrow_up absolute top-0 w-full h-full -rotate-90 scale-50;
+  }
+  .swiper_buttons_before_next_icon {
+    @apply content-bg_arrow_up absolute top-0 w-full h-full rotate-90 scale-50;
+  }
+
+  /* SHOP ADS SWIPER CLASSES ========================================================================================================================================================== */
+  .shopAdsSwiper {
+    @apply w-full max-h-[400px] h-[400px] mb-4;
+  }
+  .shopAdsSwiper .swiper-slide {
+    @apply w-full h-[370px] text-center text-[1.1rem] flex justify-center items-center;
+  }
+  .shopAdsSwiper .swiper-slide img {
+    @apply block w-full h-full object-cover rounded-[12px] overflow-hidden;
+  }
+  .shopAdsSwiper .swiper-button-prev {
+    @apply swiper_buttons_bg;
+  }
+  .shopAdsSwiper .swiper-button-prev::after {
+    @apply hidden;
+  }
+  .shopAdsSwiper .swiper-button-prev::before {
+    @apply swiper_buttons_before_prev_icon;
+  }
+  .shopAdsSwiper .swiper-button-next {
+    @apply swiper_buttons_bg;
+  }
+  .shopAdsSwiper .swiper-button-next::after {
+    @apply hidden;
+  }
+  .shopAdsSwiper .swiper-button-next::before {
+    @apply swiper_buttons_before_next_icon;
+  }
+  /* NAVIGATION SWIPER ADS ======================================================================================================= */
+  @layer utilities {
+    .shopAdsSwiper {
+      --swiper-theme-color: orange;
+    }
+    .shopAdsSwiper .swiper-pagination-bullet {
+      width: 15px;
+      height: 15px;
+      @media (max-width: 768px) {
+        width: 12px;
+        height: 12px;
+      }
+      @media (max-width: 490px) {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    .my_dropdown_shadow {
+      -webkit-box-shadow: 0px 32px 42px -6px rgba(0, 0, 0, 0.16);
+      -moz-box-shadow: 0px 32px 42px -6px rgba(0, 0, 0, 0.16);
+      box-shadow: 0px 32px 42px -6px rgba(0, 0, 0, 0.16);
+    }
+  }
+
+  /* BACKGROUND FOR FLOATING LABEL===================================================== */
+  .my_label_bg_gradient {
+    background: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #ffffff 50%,
+      #fafafa 50%,
+      #fafafa 100%
+    );
+  }
+}
